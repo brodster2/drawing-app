@@ -1,10 +1,43 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Drawing App</title>
-    <meta name="viewport" content="initial-scale=1, user-scalable=yes" />
-    <link rel="stylesheet" href="styling.css" />
-    
-  </head>
+    <head>
+        <meta charset="utf-8">
+        <title>Drawing App</title>
+        <meta name="viewport" content="initial-scale=1, user-scalable=yes">
+<!--    jQuery UI theme-->
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+        <!--Nunito font-->
+        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+<!--    My stylesheet-->
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        
+        <!--Title-->
+        <div id="title">
+            <p>Drawing App</p>
+        </div>
+        
+        <div id="inputcontainer">
+            <!--Color input-->
+            <select id="colorselector">
+                <option>black</option> 
+                <option>blue</option> 
+                <option>red</option> 
+            </select>
+        </div>
+        
+<!--    jQuery library-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!--    jQuery UI library-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<!--    My script-->
+        <script src="logic.js"></script>
+        
+        <script>
+            $(function(){
+                $('#colorselector').selectmenu();
+            });
+        </script>
+    </body>
 </html>

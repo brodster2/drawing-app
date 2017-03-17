@@ -1,0 +1,27 @@
+/*Center all elements and add background*/
+body{
+    font-family: nunito, sans-serif;
+    text-align: center;
+    background: url(images/pexels-photo-235985.jpeg) center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#title{
+    background: #284A6A;
+    height: 6vh;
+    width: 40vw;
+    margin: 0 auto 20px auto;
+    color: #FFDFAB;
+    font-size: 4vh;
+    box-shadow: 2px 2px 2px #100;
+    -moz-box-shadow: 2px 2px 2px #100;
+    -webkit-box-shadow: 2px 2px 2px #100;
+}
+
+#title p{
+    margin-top: 0.5vh;
+    
+}
