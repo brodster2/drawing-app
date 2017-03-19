@@ -47,6 +47,7 @@ body{
     width: 3px;
     border-radius: 50%;
     background-color: black;
+/*    Centers the circle and when size is changed it    expands/contracts from the circles' center*/
     position: absolute;
     top: 50%;
     left: 50%;
