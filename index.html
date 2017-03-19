@@ -5,7 +5,7 @@
         <title>Drawing App</title>
         <meta name="viewport" content="initial-scale=1, user-scalable=yes">
 <!--    jQuery UI theme-->
-        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/start/jquery-ui.css">
         <!--Nunito font-->
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 <!--    My stylesheet-->
@@ -18,13 +18,19 @@
             <p>Drawing App</p>
         </div>
         
-        <div id="inputcontainer">
+        <div id="inputContainer">
             <!--Color input-->
-            <select id="colorselector">
-                <option>black</option> 
-                <option>blue</option> 
-                <option>red</option> 
-            </select>
+            <div class="input">
+                <input type="color" list id="colorSelector">
+            </div>
+            <!--Brush size display-->
+            <div class="input" id="brushDisplay">
+                <div id="circle"></div>
+            </div>
+            <!--Brush size selector slider-->
+            <div class="input">
+                <div id="brushSlider"></div>
+            </div>
         </div>
         
 <!--    jQuery library-->
@@ -34,10 +40,6 @@
 <!--    My script-->
         <script src="logic.js"></script>
         
-        <script>
-            $(function(){
-                $('#colorselector').selectmenu();
-            });
-        </script>
+        
     </body>
 </html>
