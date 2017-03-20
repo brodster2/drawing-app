@@ -78,6 +78,31 @@ body{
     margin-top: 1.5%
 }
 
-/*The icon tags*/
+/*The icon containers*/
 .button {
+    background: #284A6A;
+    width: 60px;
+    height: 60px;
+    line-height: 2;
+    border-radius: 10px;
+    box-shadow: 2px 2px 3px;
+    -webkit-box-shadow: 2px 2px 3px;
+    -moz-box-shadow: 2px 2px 3px;
+}
+
+.button:hover {
+    background: #3D2C2E;
+    cursor: pointer;
+}
+
+/*create effect of button being depressed*/
+.button:active {
+    transform: translate(2px, 2px);
+    -webkit-transform: translate(2px, 2px);
+    -moz-transform: translate(2px, 2px);
+    -ms-transform: translate(2px, 2px);
+    -o-transform: translate(2px, 2px);
+    box-shadow: 0px 0px;
+    -webkit-box-shadow: 0px 0px;
+    -moz-box-shadow: 0px 0px;
 }
