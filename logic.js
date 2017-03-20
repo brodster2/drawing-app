@@ -14,4 +14,5 @@ $(function(){
 //    Set height of canvas using window.height()
     var h = Math.floor( $(window).height() * 0.6 );
     $('#canvasContainer').height( h );
+    
 });

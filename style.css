@@ -47,7 +47,7 @@ body{
     width: 3px;
     border-radius: 50%;
     background-color: black;
-/*    Centers the circle and when size is changed it    expands/contracts from the circles' center*/
+/*    Centers the circle and when size is changed it expands/contracts from the circles' center*/
     position: absolute;
     top: 50%;
     left: 50%;
@@ -62,4 +62,22 @@ body{
     width: 80%;
     border: 1px solid black;
     margin: 0px auto;
+}
+
+#buttonsContainer {
+	width: 80%;
+    margin: 10px auto;
+    height: 80px;
+}
+
+/*The container holding i .button*/
+.input2 {
+    float: left;
+    height: 30px;
+    width: 33%;
+    margin-top: 1.5%
+}
+
+/*The icon tags*/
+.button {
 }
