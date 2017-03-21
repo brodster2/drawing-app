@@ -28,18 +28,24 @@ $(function(){
     canvas.height = $('#canvasContainer').height();
     canvas.width = $('#canvasContainer').width();
     
-    //draw a line
-    //declare a new path
-    context.beginPath();
-    
+    //set line style
     //set line width
     context.lineWidth = 10;
     //set line color
     context.strokeStyle = 'red';
+    //set line cap
+    context.lineCap = "round";
+    context.lineJoin = "round";
+    
+    //draw a line
+    //declare a new path
+    context.beginPath();
     //set context position
     context.moveTo(50,50);
     //draw straight line from start to end point
     context.lineTo(200, 250);
+    //draw another line
+    context.lineTo(50, 500);
     
     //make line visible
     context.stroke();
