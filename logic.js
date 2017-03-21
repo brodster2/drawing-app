@@ -11,8 +11,36 @@ $(function(){
        $('#circle').width(ui.value); 
     });
     
-//    Set height of canvas using window.height()
-    var h = Math.floor( $(window).height() * 0.6 );
-    $('#canvasContainer').height( h );
+//    Set height of canvasContainer using window.height()
+    $('#canvasContainer').height( $(window).height() * 0.6 );
+    $('#canvasContainer').width( $(window).width() * 0.8 );
     
+//    Dynamically set height and width of canvas
+    /*$('#paint').width( $('#canvasContainer').width() );
+    $('#paint').height( $('#canvasContainer').height() );*/
+    
+    
+//    Canvas setup
+    var canvas = document.getElementById('paint');
+    var context = canvas.getContext('2d');
+    
+    //set height and width;
+    canvas.height = $('#canvasContainer').height();
+    canvas.width = $('#canvasContainer').width();
+    
+    //draw a line
+    //declare a new path
+    context.beginPath();
+    
+    //set line width
+    context.lineWidth = 10;
+    //set line color
+    context.strokeStyle = 'red';
+    //set context position
+    context.moveTo(50,50);
+    //draw straight line from start to end point
+    context.lineTo(200, 250);
+    
+    //make line visible
+    context.stroke();
 });
