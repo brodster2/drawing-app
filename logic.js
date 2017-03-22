@@ -1,15 +1,5 @@
 $(function(){
-//    Create slider to set brush size
-    $('#brushSlider').slider({
-        max: 30,
-        min: 3,
-    });
     
-//    Function to change #circle height & width when slider is moved
-    $('#brushSlider').on("slide", function( event, ui ) {
-       $('#circle').height(ui.value); 
-       $('#circle').width(ui.value); 
-    });
     
 //    Set height of canvasContainer using window.height()
     $('#canvasContainer').height( $(window).height() * 0.6 );
@@ -64,7 +54,7 @@ $(function(){
         if(paint == true){
             if(paint_erase == "paint"){
                 //get color input
-                ctx.strokeStyle = "red";
+                ctx.strokeStyle = $('#colorSelector').val();
             } else {
                 //color == white
                 ctx.strokeStyle = "white";
@@ -111,6 +101,19 @@ $(function(){
         $('#erase').removeClass("eraseMode");
     });
     
-    /*functions*/
+    // change color input
+    $('#colorSelector').change(function(){
+        $('#circle').css("background-color", $(this).val());
+    });
     
+    // change lineWidth using slider
+    $('#brushSlider').slider({
+        max: 30,
+        min: 3,
+        slide: function(event, ui){
+            $('#circle').height(ui.value); 
+            $('#circle').width(ui.value);
+            ctx.lineWidth = ui.value;
+        }
+    });
 });
