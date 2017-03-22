@@ -15,38 +15,102 @@ $(function(){
     $('#canvasContainer').height( $(window).height() * 0.6 );
     $('#canvasContainer').width( $(window).width() * 0.8 );
     
-//    Dynamically set height and width of canvas
-    /*$('#paint').width( $('#canvasContainer').width() );
-    $('#paint').height( $('#canvasContainer').height() );*/
-    
     
 //    Canvas setup
+    // if user is paining erasing or outside canvas
+    var paint = false;
+    // if user is paintin or erasing
+    var paint_erase = "paint";
+    // canvas element
     var canvas = document.getElementById('paint');
-    var context = canvas.getContext('2d');
+    // variable for drawing on canvas
+    var ctx = canvas.getContext('2d');
+    // canvas container for calling mouse enter and leave events
+    var container = $('#canvasContainer');
+    // mouse position object
+    var mouse = {x: 0, y: 0};
     
     //set height and width;
     canvas.height = $('#canvasContainer').height();
     canvas.width = $('#canvasContainer').width();
     
-    //set line style
-    //set line width
-    context.lineWidth = 10;
-    //set line color
-    context.strokeStyle = 'red';
-    //set line cap
-    context.lineCap = "round";
-    context.lineJoin = "round";
+    //onload load saved from local storage
+    if(localStorage.getItem("imgCanvas") != null){
+        var img = new Image();
+        img.onload = function(){
+            ctx.drawImage(img, 0, 0);
+        }
+        img.src = localStorage.getItem("imgCanvas");
+    };
     
-    //draw a line
-    //declare a new path
-    context.beginPath();
-    //set context position
-    context.moveTo(50,50);
-    //draw straight line from start to end point
-    context.lineTo(200, 250);
-    //draw another line
-    context.lineTo(50, 500);
+    //set drawing parameters: lineWidth, lineJoin and lineCap
+    ctx.lineWidth = 3;
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
     
-    //make line visible
-    context.stroke();
+    //clicking inside container
+    container.mousedown(function(e){
+        paint = true;
+        ctx.beginPath();
+        mouse.x = e.pageX - this.offsetLeft;
+        mouse.y = e.pageY - this.offsetTop;
+        ctx.moveTo(mouse.x, mouse.y);
+    });
+    
+    //move the mouse while holding mouse key
+    container.mousemove(function(e){
+        mouse.x = e.pageX - this.offsetLeft;
+        mouse.y = e.pageY - this.offsetTop;
+        if(paint == true){
+            if(paint_erase == "paint"){
+                //get color input
+                ctx.strokeStyle = "red";
+            } else {
+                //color == white
+                ctx.strokeStyle = "white";
+            }
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.stroke();
+        }
+    });
+    
+    // mouseup -> stop painting
+    container.mouseup(function(){
+        paint = false;
+    });
+    
+    // leave container -> stop painting
+    container.mouseleave(function(){
+        paint = false;
+    });
+    
+    // click on save
+    $('#save').click(function(){
+        if(typeof(localStorage) != null){
+            localStorage.setItem("imgCanvas", canvas.toDataURL());
+        } else {
+            window.alert("Your browser does not support saving to local storage.");
+        }
+    });
+    
+    // click on erase
+    $('#erase').click(function(){
+        if(paint_erase == "paint"){
+            paint_erase = "erase";
+        }
+        else if(paint_erase == "erase"){
+            paint_erase = "paint";
+        }
+        $(this).toggleClass("eraseMode");
+    });
+    
+    //click on reset
+    $('#reset').click(function(){
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        paint_erase = "paint";
+        $('#erase').removeClass("eraseMode");
+    });
+    
+    /*functions*/
+    
 });
