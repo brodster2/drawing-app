@@ -15,7 +15,7 @@ body{
     width: 40vw;
     margin: 0 auto 20px auto;
     color: #FFDFAB;
-    font-size: 4vh;
+    font-size: 40px;
     box-shadow: 2px 2px 2px #100;
     -moz-box-shadow: 2px 2px 2px #100;
     -webkit-box-shadow: 2px 2px 2px #100;
@@ -25,7 +25,7 @@ body{
     margin-top: 0.5vh;
 }
 
-/*inputContainer: holds #colorSelector, #brushDisplay and #brushSlider all of class input*/
+/*inputContainer: holds #colorSelector, #brushDisplay and #brushSlider all of class .input*/
 #inputContainer {
 	width: 10%;
     margin: 15px auto;
@@ -36,11 +36,94 @@ body{
     font-size: 1.3em;
 }
 
+/*Set to relative for positioning of absolute #circle*/
+#brushDisplay {
+	position: relative;
+}
+
 /*Create initial brush size circle*/
 #circle {
 	height: 3px;
     width: 3px;
     border-radius: 50%;
     background-color: black;
-    margin: 20px auto;
+/*    Centers the circle and when size is changed it expands/contracts from the circles' center*/
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+#canvasContainer {
+    border: 1px solid black;
+    margin: 0px auto;
+}
+
+#paint {
+    background-color: #fff;
+    cursor: crosshair;
+}
+
+#buttonsContainer {
+	width: 80%;
+    margin: 10px auto;
+    height: 80px;
+}
+
+/*The container holding i .button*/
+.input2 {
+    float: left;
+    height: 30px;
+    width: 33%;
+    margin-top: 1.5%
+}
+
+
+/*The icon containers*/
+.button {
+    background: #284A6A;
+    width: 60px;
+    height: 60px;
+    line-height: 2;
+    border-radius: 10px;
+    box-shadow: 2px 2px 3px;
+    -webkit-box-shadow: 2px 2px 3px;
+    -moz-box-shadow: 2px 2px 3px;
+}
+
+.button:hover {
+    background: #3D2C2E;
+    cursor: pointer;
+}
+
+/*create effect of button being depressed*/
+.button:active {
+    transform: translate(2px, 2px);
+    -webkit-transform: translate(2px, 2px);
+    -moz-transform: translate(2px, 2px);
+    -ms-transform: translate(2px, 2px);
+    -o-transform: translate(2px, 2px);
+    box-shadow: 0px 0px;
+    -webkit-box-shadow: 0px 0px;
+    -moz-box-shadow: 0px 0px;
+}
+
+.eraseMode {
+    background-color: red;
+    color: white;
+}
+
+@media(max-width: 768px) {
+    #title {
+        font-size: 25px;
+        line-height: 2;
+    }
+    
+    #inputContainer {
+        width: 30%;
+    }
 }
